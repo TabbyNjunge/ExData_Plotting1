@@ -1,0 +1,10 @@
+##Read in the data
+getwd()
+setwd("D:/Documents and Settings/tnjunge/Documents/R/Exploratorydatanalysisdata/exdata%2Fdata%2Fhousehold_power_consumption")
+HHpowerconsumption_Feb <-rbind(HHpowerconsumption[HHpowerconsumption$Date=="1/2/2007",],HHpowerconsumption[HHpowerconsumption$Date=="2/2/2007",])
+HHpowerconsumptionFeb$Date <- as.Date(HHpowerconsumptionFeb$Date, format = '%d/%m/%Y')
+HHpowerconsumptionFeb$DateTime <- as.POSIXct(paste(HHpowerconsumptionFeb$Date, HHpowerconsumptionFeb$Time))
+plot.new()
+png('Plot2.png')
+plot(HHpowerconsumptionFeb$DateTime,HHpowerconsumptionFeb$Global_active_power, xlab = '', ylab = 'Global Active Power (kilowatt)', type = 'l')
+dev.off()
